@@ -1,6 +1,6 @@
-// запуск видео с примерами анимаций
+// запуск видео с мотивацией
 (function () {
-    var $slide = $('#Splash-video'),
+    var $slide = $('#motivation'),
         video = $slide.find('video')[0];
 
     $slide.attrchange({
@@ -10,6 +10,7 @@
                 return;
 
             if (!/active/.test(event.newValue)) {
+                video.pause();
                 video.currentTime = 0;
                 return;
             }
@@ -20,9 +21,9 @@
     });
 }());
 
-// запуск видео с примером компоновки
+// запуск видео с новичками в зале
 (function () {
-    var $slide = $('#Layout-video'),
+    var $slide = $('#noobs'),
         video = $slide.find('video')[0];
 
     $slide.attrchange({
@@ -32,6 +33,7 @@
                 return;
 
             if (!/active/.test(event.newValue)) {
+                video.pause();
                 video.currentTime = 0;
                 return;
             }
@@ -42,9 +44,9 @@
     });
 }());
 
-// запуск видео с сайтом css triggers
+// запуск видео с 2gis
 (function () {
-    var $slide = $('#CSS-triggers'),
+    var $slide = $('#2gis'),
         video = $slide.find('video')[0];
 
     $slide.attrchange({
@@ -54,50 +56,7 @@
                 return;
 
             if (!/active/.test(event.newValue)) {
-                video.currentTime = 0;
-                return;
-            }
-
-            // запускаем видео
-            video.play();
-        }
-    });
-}());
-
-// запуск видео с сайтом css triggers
-(function () {
-    var $slide = $('#Composite-layers'),
-        video = $slide.find('video')[0];
-
-    $slide.attrchange({
-        trackValues: true,
-        callback: function (event) {
-            if (event.attributeName !== 'class')
-                return;
-
-            if (!/active/.test(event.newValue)) {
-                video.currentTime = 0;
-                return;
-            }
-
-            // запускаем видео
-            video.play();
-        }
-    });
-}());
-
-// запуск видео с профайлингом анимаци   в хроме
-(function () {
-    var $slide = $('#Profile'),
-        video = $slide.find('video')[0];
-
-    $slide.attrchange({
-        trackValues: true,
-        callback: function (event) {
-            if (event.attributeName !== 'class')
-                return;
-
-            if (!/active/.test(event.newValue)) {
+                video.pause();
                 video.currentTime = 0;
                 return;
             }

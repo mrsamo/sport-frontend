@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>CSS и JS анимации</title>
+    <title>Пишем код, тягаем штангу</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -39,6 +39,152 @@
         {
             background: none;
         }
+
+        .blank_cover
+        {
+            background-color: #000;
+        }
+
+        .blank_cover h2
+        {
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .cloud
+        {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -100px 0 0 -100px;
+            opacity: 1;
+            transition: all .3s;
+            will-change: opacity;
+        }
+
+        .cloud__normal
+        {
+            background: url(pictures/cloud.png) 0 0 no-repeat;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-size: cover;
+            opacity: 1;
+            transition: all .3s;
+            will-change: opacity;
+        }
+
+        .cloud__normal:before,
+        .cloud__normal:after
+        {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url(pictures/cloud.png) 0 0 no-repeat;
+            background-size: cover;
+        }
+
+        .cloud__normal:before
+        {
+            transform: translateX(-20%) rotate(220deg);
+        }
+
+        .cloud__normal:after
+        {
+            transform: translateX(20%) rotate(0);
+        }
+
+        .cloud__smoke
+        {
+            background: url(pictures/smoke.png) 0 0 no-repeat;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-size: cover;
+            color: #fff;
+            opacity: 1;
+            transition: all .3s;
+            will-change: opacity;
+        }
+
+        .cloud__smoke:before,
+        .cloud__smoke:after
+        {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url(pictures/smoke.png) 0 0 no-repeat;
+            background-size: cover;
+        }
+
+        .cloud__smoke:before
+        {
+            transform: translateX(-20%) rotate(220deg);
+        }
+
+        .cloud__smoke:after
+        {
+            transform: translateX(20%) rotate(0);
+        }
+
+        .cloud__explosion
+        {
+            background: url(pictures/explosion.png) 0 0 no-repeat;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-size: cover;
+            color: #fff;
+            opacity: 1;
+            transition: all .3s;
+            will-change: opacity;
+        }
+
+        .cloud__explosion:before,
+        .cloud__explosion:after
+        {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url(pictures/explosion.png) 0 0 no-repeat;
+            background-size: cover;
+        }
+
+        .cloud__explosion:before
+        {
+            transform: translateX(-20%) rotate(220deg);
+        }
+
+        .cloud__explosion:after
+        {
+            transform: translateX(20%) rotate(0);
+        }
+
+        .cloud__text
+        {
+            line-height: 1;
+            text-align: center;
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <body class="list">
@@ -70,1313 +216,1086 @@
         }
     </style>
     <div style="text-align: center">
-        <h2 class="title">Пишем код, тягаем штангу</h2>
+        <h2 class="title">Пишем код,<br>тягаем штангу</h2>
         <img src="pictures/logo.svg" class="logo">
         <div class="name">Александр Завьялов</div>
     </div>
 </section>
 
-<section class="slide cover" id="Splash-video">
-    <video src="video/our-promo-sites.webmhd.webm" controls="controls" width="100%"></video>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Доклад о том:</h2>
-        <ul>
-            <li>как браузеры реализуют анимации</li>
-            <li>что такое композитный слой и зачем знать о его существовании</li>
-            <li>в чем различия между CSS и JS анимациями</li>
-            <li>какие инструменты помогут создать нужные эффекты</li>
-            <li>почему некоторые анимации тормозят</li>
-            <li>как Chrome DevTools позволяет управлять и профилировать анимации</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide" id="Base">
+<section class="slide cover" id="motivation">
     <style>
-        #Base .works
+        #motivation video
         {
-            position: relative;
+            margin: 0 auto;
+            width: 100%;
         }
+    </style>
+    <video src="videos/sport-motivation.webm" controls="controls" height="100%"></video>
+</section>
 
-        #Base .works div
+<section class="slide" id="hours-of-activity">
+    <style>
+        #hours-of-activity
         {
-            font-size: 80%;
-            line-height: 1.7;
-            font-weight: bold;
-            color: #fff;
-            padding: 0 10px;
-            display: inline-block;
-            text-indent: 0;
+
         }
 
-        #Base img {
-            margin: 81px 0 0 70px;
+        #hours-of-activity:after
+        {
+            display: none;
         }
 
-        #Base .style {
-            position: absolute;
-            top: 10px;
-            left: 177px;
-            background:#774fe3;
-        }
-
-        #Base .style:before {
-            position: absolute;
-            bottom: -39px;
-            left: 110px;
-            content: '';
-            height: 40px;
-            width: 1px;
-            background: #774fe3;
-            transform: rotate(-25deg);
-        }
-
-        #Base .layout {
-            position: absolute;
-            bottom: -53px;
-            left: 344px;
-            background:#774fe3;
-        }
-
-        #Base .layout:before {
-            position: absolute;
-            top: -39px;
-            left: 72px;
-            content: '';
-            height: 40px;
-            width: 1px;
-            background: #774fe3;
-            transform: rotate(25deg);
-        }
-
-        #Base .rasterization {
-            position: absolute;
-            top: 10px;
-            left: 468px;
-            background:#4b9938;
-        }
-
-        #Base .rasterization:before {
-            position: absolute;
-            bottom: -39px;
-            left: 79px;
-            content: '';
-            height: 40px;
-            width: 1px;
-            background: #4b9938;
-            transform: rotate(-25deg);
-        }
-
-        #Base .composition {
-            position: absolute;
-            bottom: -53px;
-            right: 23px;
-            background:#4b9938;
-        }
-
-        #Base .composition:before {
-            position: absolute;
-            top: -39px;
-            left: 77px;
-            content: '';
-            height: 40px;
-            width: 1px;
-            background: #4b9938;
-            transform: rotate(25deg);
-        }
-
-    </style>
-    <div>
-        <h2>Основы</h2>
-        <ul>
-            <li>FPS (50...60)</li>
-            <li>Новый кадр каждые ~16.6ms</li>
-            <li style="position:relative;">На что тратится время:
-                <div class="works">
-                    <img src="pictures/actions.png" alt="" width="800">
-                    <div class="style next">Перерасчет стилей</div>
-                    <div class="layout next">Компоновка</div>
-                    <div class="rasterization next">Растеризация</div>
-                    <div class="composition next">Композитинг</div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Перерасчет стилей</h2>
-        <ul>
-            <li>Парсинг HTML (DOM)</li>
-            <li>Парсинг CSS (CSSOM)</li>
-            <li>DOM + CSSOM = RenderTree</li>
-        </ul>
-        <p>Меняем CSS, браузер пересчитывает CSSOM</p>
-    </div>
-</section>
-
-<section class="slide cover" id="Layout-video">
-    <video src="video/layout.webmhd.webm" controls="controls" width="100%"></video>
-</section>
-
-<section class="slide" style="background: #101010;">
-    <div>
-        <h2 style="color:#fff">Растеризация</h2>
-        <img src="pictures/8.png">
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Композитинг</h2>
-        <ul>
-            <li><em>Битмап</em> - растровая картинка</li>
-            <li>Вывод конечного изображения на экран</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Jank («лаг»)</h2>
-        <img src="pictures/jank-new.png" style="margin:10px 0 0 -10px">
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Меньше работы браузера - больше FPS</h2>
-        <ul>
-            <li>jQuery анимация цвета фона</li>
-        </ul>
-        <img src="pictures/actions1.png" alt="" width="800" style="margin: -40px 0 20px;">
-        <div class="next">
-        <ul>
-            <li>CSS анимация opacity</li>
-        </ul>
-        <img src="pictures/actions2.png" alt="" width="800" style="margin: -40px 0 0;">
-        </div>
-    </div>
-</section>
-
-<section class="slide cover" id="CSS-triggers">
-    <video src="video/css-triggers.webmhd.webm" controls="controls" width="100%"></video>
-</section>
-
-<section class="slide" id="Chrome-schema-old">
-    <style>
-        #Chrome-schema-old .schema-1 {
-            margin:0 0 0 80px;
-        }
-
-        #Chrome-schema-old .schema-2 {
-            margin:0px 0 0 -600px;
-            position: absolute;
-            opacity: 0;
-            transition: opacity 1s;
-        }
-
-        #Chrome-schema-old .active {
-            opacity: 1;
-        }
-    </style>
-    <div>
-        <h2>Давным давно... один поток рендера</h2>
-        <ol>
-            <li>Визуализация страницы на CPU</li>
-            <li>Основной поток (main thread)</li>
-        </ol>
-        <img src="pictures/chrome-rendering-ago.png" class="schema-1 next">
-        <img src="pictures/chrome-rendering-ago-2.png" class="schema-2 next">
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Сейчас. Два потока рендера</h2>
-        <ol>
-            <li>Визуализация с помощью видеокарты (GPU)</li>
-            <li>Основной поток (main thread)</li>
-            <li>Поток композитора (compositor thread)</li>
-        </ol>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Основной поток</h2>
-        <ul>
-            <li>JS</li>
-            <li>Перерасчет стилей</li>
-            <li>Компоновка</li>
-            <li>Растеризация (создание битмапа)</li>
-            <li>Отправка битмапа в поток композитора</li>
-        </ul>
-        <p class="next"><strong>Основной поток может быть недоступен пользователю!</strong></p>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Поток композитора</h2>
-        <ul>
-            <li>Сохранение битмапа</li>
-            <li>Вывод на экран</li>
-            <li>Композитинг при скроллинге</li>
-        </ul>
-        <p class="next"><strong>Всегда поддерживает заданную дисплеем частоту обновления экрана!</strong></p>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Ускоренный композитинг на видеокарте</h2>
-        <ol>
-            <li>Страница делится на слои</li>
-            <li>Слои растеризуются в битмапы</li>
-            <li>Битмапы загружаются в GPU</li>
-            <li><i>Compositor</i> инструктирует GPU, как собрать конечное изображение</li>
-        </ol>
-        <img src="pictures/14.png" style="margin:-47px 0 0 150px">
-    </div>
-</section>
-
-<section class="slide" id="Chrome-schema">
-    <style>
-        #Chrome-schema .schema-1 {
-            margin:0 0 0 -60px;
-        }
-
-        #Chrome-schema .schema-2 {
-            margin:-367px 0 0 -60px;
-            position: absolute;
-            opacity: 0;
-            transition: opacity 1s;
-        }
-
-        #Chrome-schema .active {
-           opacity: 1;
-        }
-    </style>
-    <div>
-        <h2>Ускоренный композитинг на видеокарте</h2>
-        <img src="pictures/chrome-rendering.png" class="schema-1">
-        <img src="pictures/chrome-rendering-2.png" class="schema-2 next">
-        <p><a href="http://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome">GPU
-            Accelerated Compositing in Chrome</a></p>
-    </div>
-</section>
-
-<section class="slide cover" id="Composite-layers">
-    <video src="video/composite-layers.webmhd.webm" controls="controls" width="100%"></video>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Слои</h2>
-        <p>Слой (композитный слой) - часть страницы, поддерево DOM. <b>Отрисовывается независимо</b>, <b>компонуется в
-            GPU</b>. Может
-            растягиваться, перемещаться, скрываться (через прозрачность) <b>без отрисовки</b>.</p>
-    </div>
-</section>
-
-<section class="slide" id="prices">
-    <style>
-        #prices p {
+        #hours-of-activity .result
+        {
             text-align: center;
             line-height: 1;
-        }
-
-        #prices p img {
-            width: 100px;
-        }
-    </style>
-    <div>
-        <p style="margin:-20px 0 0 138px;position: absolute;">
-            Paint
-        </p>
-        <p style="margin:-20px 0 0 560px;position: absolute;">
-            Composite
-        </p>
-        <img src="pictures/sad-and-happy.png" alt="" width="1030" style="margin:20px 0 0 -120px">
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Слои</h2>
-        <span><strong>Условия</strong> создания слоя:</span>
-        <ul style="font-size:80%">
-            <li>3D transform <code>transform: translateZ(0)</code></li>
-            <li>&lt;video&gt; с включенным h/a</li>
-            <li>&lt;canvas&gt; с 3D или 2D с включенным h/a</li>
-            <li>плагины (flash, silverlight)</li>
-            <li>css анимации opacity или transform</li>
-            <li>css фильтры</li>
-            <li>элементы, вынесенные над композитным слоем</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Слои для анимаций. Дружелюбный CSS</h2>
-        <ul>
-            <li>Opacity</li>
-            <li>Transform</li>
-            <li>Filter</li>
-        </ul>
-        <p>Все остальные могут вызвать обновление текстур</p>
-    </div>
-</section>
-
-<section class="slide" id="habrahabr">
-    <style>
-        #habrahabr a {
-            background: none;
-        }
-    </style>
-    <div>
-        <h2>Хотите знать больше?</h2>
-        <a href="http://habrahabr.ru/company/yandex/blog/239169/" target="_blank">
-            <img src="pictures/habrahabr.png" alt="" width="660" style="margin:-10px 0 0 -7px;">
-            <img src="pictures/habrahabr-logo.png" alt="" width="130" style="position: absolute;margin:-30px 0 0 -77px;transform: rotate(25deg);">
-        </a>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>CSS анимации</h2>
-        <ul>
-            <li>Keyframes</li>
-            <li>Transitions</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>CSS анимации</h2>
-        <ul>
-            <li class="plus">Просты</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide" id="CssAnim">
-    <style>
-        #CssAnim .b-red
-        {
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            display: inline-block;
-            vertical-align: top;
-        }
-
-        #CssAnim .b-red:hover
-        {
-            transition: transform 1s;
-            transform: rotate(360deg);
-        }
-
-        #CssAnim .b-yellow
-        {
-            width: 100px;
-            height: 100px;
-            background-color: yellow;
-            display: inline-block;
-            vertical-align: top;
-            margin: 0 0 0 200px;
-        }
-
-        #CssAnim .b-yellow:hover
-        {
-            animation: 1s rotate;
-        }
-
-        @keyframes rotate
-        {
-            to
-            {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-    <div>
-        <h2>CSS анимации</h2>
-        <table class="b-table_border_none">
-            <tr>
-                <td width="55%">
-                    <pre style="font-size:80%;">
-            <code>.b-red {}</code>
-            <code>.b-red:hover {</code>
-            <code> transform: rotate(360deg);</code>
-            <code> transition: transform 1s;</code>
-            <code>}</code>
-            <br>
-        </pre>
-                    <div class="b-red"></div>
-                </td>
-                <td>
-                    <pre style="font-size:80%;">
-            <code>.b-yellow:hover {</code>
-            <code> animation: 1s rotate;</code>
-            <code>}</code>
-            <code>@keyframes rotate {</code>
-            <code> to { transform: rotate(360deg); }</code>
-            <code>}</code>
-        </pre>
-                    <div class="b-yellow"></div>
-                </td>
-            </tr>
-        </table>
-
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>CSS анимации</h2>
-        <ul>
-            <li class="plus">Просты</li>
-            <li class="plus"><a href="examples/css-animations/index.html">Свободны от основного потока</a></li>
-            <li class="plus next">Синхронизируются с частотой обновления экрана</li>
-            <li class="minus next">Неконтролируемые: только пауза и запуск</li>
-            <li class="minus next">Рассинхронизация</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>JS анимации</h2>
-        <ul>
-            <li>jQuery</li>
-            <li>Velocity</li>
-            <li>GreenSock</li>
-            <li>Canvas</li>
-            <li>WebGL</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>JS анимации</h2>
-        <ul>
-            <li class="plus">Полный контроль</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>JS анимации: GreenSock (GSAP)</h2>
-        <ul>
-            <li>pause()</li>
-            <li>play()</li>
-            <li>seek()</li>
-            <li>reverse()</li>
-            <li>ratio()</li>
-            <li>callback paradise (start, update, finish etc)</li>
-            <li>tween, timeline</li>
-            <li>plugins: css, svg, canvas</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide" id="GSAP-example">
-    <script src="js/gsap.js"></script>
-    <style>
-        #GSAP-example .next {
-            visibility: visible !important;
-            position: relative;
-        }
-
-        #GSAP-example .active:before
-        {
-            content: '';
             position: absolute;
-            top: -4px;
-            bottom: -4px;
-            left: -4px;
-            right: -4px;
-            background-color: #0289fb;
-            border-radius: 5px;
-            opacity: .3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            transition: color 1s linear;
         }
 
-        #GSAP-example #demo
+        #hours-of-activity .hours
         {
-            width: 692px;
-            height: 180px;
-            padding: 8px;
-            margin-bottom: 10px;
-            margin-top: -30px;
+            font-size: 600%;
         }
 
-        #GSAP-example #logo
+        #hours-of-activity .red
         {
-            position: relative;
-            width: 170px;
-            height: 170px;
-            background: url(examples/composite-thread/i/yabro.png) no-repeat;
-        }
-
-        #GSAP-example .controls
-        {
-            text-align: center;
-        }
-
-        #GSAP-example input[type="button"]
-        {
-            -webkit-appearance: button;
-            padding: 8px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-
-    </style>
-    <div>
-        <h2>JS анимации: GSAP</h2>
-        <pre style="font-size:70%">
-            <code>var tween = TweenLite.to(<span class="elem next">logo</span>, <span class="elem next">3</span>, {</code>
-            <code> <span class="elem next">left:"600px", rotation:"360deg"</span>, <span class="elem next">ease:Linear.easeNone</span> });</code>
-        </pre>
-        <div id="demo">
-            <div id="logo"></div>
-        </div>
-        <div class="controls">
-            <input type="button" id="playBtn" value="play()">
-            <input type="button" id="pauseBtn" value="pause()">
-            <input type="button" id="resumeBtn" value="resume()">
-            <input type="button" id="reverseBtn" value="reverse()">
-            <input type="button" id="playFromBtn" value="play(2)">
-            <input type="button" id="reverseFromBtn" value="reverse(1)"><br/>
-            <!--<input type="button" id="seekBtn" value="seek(3)">-->
-            <!--<input type="button" id="timeScaleSlowBtn" value="timeScale(0.5)">-->
-            <!--<input type="button" id="timeScaleNormalBtn" value="timeScale(1)">-->
-            <!--<input type="button" id="timeScaleFastBtn" value="timeScale(2)">-->
-            <!--<input type="button" id="restartBtn" value="restart()">-->
-        </div>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>JS анимации</h2>
-        <ul>
-            <li class="plus">Полный контроль</li>
-            <li class="plus">Синхронизируются с частотой обновления экрана</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide" id="Raf">
-    <style>
-        #Raf table {
-
-        }
-
-        #Raf th {
-            text-align: center;
-        }
-    </style>
-    <div>
-        <h2>JS анимации: rAF</h2>
-        <ul>
-            <li><code>window.<strong>r</strong>equest<strong>A</strong>nimation<strong>F</strong>rame(callback)</code></li>
-            <li>вызывается в момент обновления кадра на экране</li>
-        </ul>
-        <table>
-            <tr>
-                <th>setTimeout</th>
-                <th>rAF</th>
-            </tr>
-            <tr>
-                <td width="50%">
-                    <pre style="font-size:70%">
-                        <code>function animate() {</code>
-                        <code>  ...do smth...</code>
-                        <code>  setTimeout(animate, 16);</code>
-                        <code>}</code>
-                        <code>animate();</code>
-                    </pre>
-                </td>
-                <td>
-                    <pre style="font-size:70%">
-                        <code>function animate() {</code>
-                        <code>  ...do smth...</code>
-                        <code>  requestAnimationFrame(animate);</code>
-                        <code>}</code>
-                        <code>animate();</code>
-                    </pre>
-                </td>
-            </tr>
-        </table>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>JS анимации: rAF</h2>
-        <ul style="margin-bottom: 20px;">
-            <li>синхронизация</li>
-        </ul>
-
-        <div id="a" style="overflow:hidden;margin: 0 0 0 50px;">
-            <div class="label">
-                <label for="display-refresh">Частота обновления экрана:</label>
-                <input id="display-refresh" type="range" min="50" max="70" value="60" step="1">
-                (<span id="cur-display-refresh">xxx</span> Hz)
-            </div>
-            <canvas id="canvas0" width="5000" height="40"></canvas>
-        </div>
-
-        <div id="b" style="display:block;overflow:scroll;margin: 0 0 0 50px;">
-            <div class="label">
-                <label for="interval">setTimeout interval:</label>
-                <input id="interval" type="range" min="6" max="20" value="16" step="1">
-                (<span id="cur-interval">xxx</span> ms)
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-
-            </div>
-            <canvas id="canvas1" width="5000" height="60"></canvas>
-        </div>
-        <script src="js/raf.js"></script>
-
-        <ul style="margin-top: 20px;">
-            <li>экономия ресурсов</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>JS анимации</h2>
-        <ul>
-            <li class="plus">Полный контроль</li>
-            <li class="plus">Синхронизируются с частотой обновления экрана</li>
-            <li class="minus">Забивают основной поток</li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide cover" id="Holywar">
-    <style>
-        #Holywar img
-        {
-            height: 100%;
-        }
-
-        #Holywar h2
-        {
-            color: #fff;
-            text-shadow: 0 0 18px red;
-        }
-
-        #Holywar a
-        {
-            color: #fff;
-            background-color: red;
-            padding: 0 6px;
-        }
-    </style>
-    <div>
-        <h2>CSS vs JS</h2>
-        <img src="pictures/holy-war.jpg" alt=""/>
-        <ul>
-            <li><a href="//davidwalsh.name/css-js-animation" target="_blank">CSS vs. JS Animation: Which is Faster?</a>
-            </li>
-            <li><a href="//greensock.com/transitions/" target="_blank">CSS Animations vs GSAP: Cage Match</a></li>
-            <li><a href="//greensock.com/css-performance" target="_blank">CSS animations performance: the untold
-                story</a></li>
-            <li><a href="//css-tricks.com/myth-busting-css-animations-vs-javascript/" target="_blank">Myth Busting: CSS
-                Animations vs. JavaScript</a></li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Производительность</h2>
-        <p>
-            <a href="examples/perf/index.html" target="_blank">Сравнение производительности анимаций CSS/JS</a><br>
-            FPS при CSS анимациях замеряется нативным счетчиком FPS<br><br>
-            <span class="next"><strong>Результат:</strong> CSS обеспечивает больший FPS и меньшую загруженность основного потока</span>
-        </p>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Инструменты для профилирования</h2>
-        <ul>
-            <li>chrome://inspect (<a href="https://developer.chrome.com/devtools/docs/remote-debugging" target="_blank">подключение мобильных</a>)</li>
-            <li>Сhrome dev tools
-            <ul>
-                <li>frame layer (просмотр слоев)</li>
-                <li>paint debugger (процесс растеризации)</li>
-                <li>animations (контроль анимаций)</li>
-                <li>easing editor (редактирование типа анимации)</li>
-            </ul>
-            </li>
-        </ul>
-        <p><a href="http://jqueryuk.com/2015/videos.php?s=devtools-state-of-the-union">DevTools State of the Union</a></p>
-    </div>
-</section>
-
-<section class="slide" id="Profile">
-    <style>
-        #Profile div
-        {
-            background-color: #000;
-        }
-
-        #Profile h2
-        {
-            color: #fff;
-        }
-    </style>
-    <div style="overflow: visible;">
-        <h2>Инструменты для профилирования. Скоро</h2>
-        <video src="video/devtools-animation.webmhd.webm" controls="controls" width="680"
-                style="margin: 0 0 0 50px;"></video>
-    </div>
-</section>
-
-<section class="slide" id="compare">
-    <div>
-        <style>
-            #compare td
-            {
-                font-size: 200%;
-            }
-
-            #compare .plus
-            {
-                color: green;
-            }
-
-            #compare .minus
-            {
-                color: red;
-            }
-
-            #compare .note
-            {
-                position: absolute;
-                margin: 10px 0 0;
-                color: #000;
-                font-size: 70%;
-            }
-
-            #compare table th
-            {
-                text-align: center;
-                background-color: #d6d7d8;
-            }
-
-            #compare table td
-            {
-                text-align: center;
-            }
-
-            #compare table .empty
-            {
-                background: none;
-            }
-
-            #compare .p-note
-            {
-                font-size: 90%;
-                line-height: 1.5;
-            }
-        </style>
-        <h2>CSS и JS</h2>
-        <table>
-            <tr>
-                <th class="empty"></th>
-                <th>Отдельный поток</th>
-                <th>Контроль</th>
-                <th>Синхронизация</th>
-            </tr>
-            <tr>
-                <th class="row">CSS</th>
-                <td>
-                    <span class="plus">+</span>
-                    <span class="note">*</span>
-                </td>
-                <td>
-                    <span class="minus">-</span>
-                </td>
-                <td>
-                    <span class="plus">+</span>
-                </td>
-            </tr>
-            <tr>
-                <th class="row">JS</th>
-                <td class="minus">-</td>
-                <td class="plus">+</td>
-                <td class="plus">+<span class="note">**</span></td>
-            </tr>
-        </table>
-        <p class="p-note">* при анимации opacity, transform<br>
-            ** при использовании rAF</p>
-    </div>
-</section>
-
-<section class="slide cover" id="Choise">
-    <style>
-        #Choise h2 {
-            margin: -50px 0px 0px;
-            color: #fff;
-            text-align: center;
-            font-size: 160%;
-            text-shadow: 0 0 74px #000;
-        }
-
-        #Choise img {
-            width: 100%;
-            margin: 70px 0 0;
-        }
-    </style>
-    <div>
-        <h2>Еще варианты?</h2>
-        <img src="pictures/choise.jpg" alt="">
-    </div>
-</section>
-
-<section class="slide" id="WebAnim">
-    <style>
-
-    </style>
-    <div>
-        <h2>Web Animations</h2>
-        <ul>
-            <li>Собственный поток (как в CSS)</li>
-            <li>Полный контроль (как в JS)</li>
-        </ul>
-        <p><a href="//w3c.github.io/web-animations/" target="_blank">Спецификация</a></p>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Web Animations. Синтаксис</h2>
-        <pre style="font-size:80%;">
-            <code>var player = element.animate([</code>
-            <code> {cssProperty: value0},</code>
-            <code> {cssProperty: value1},</code>
-            <code> {cssProperty: value2},</code>
-            <code>//...</code>
-            <code>], {</code>
-            <code> duration: timeInMs,</code>
-            <code> iterations: iterationCount,</code>
-            <code> delay: delayValue</code>
-            <code>});</code>
-        </pre>
-    </div>
-</section>
-
-<section class="slide" id="Wapi">
-    <style>
-        #Wapi .next {
-            visibility: visible !important;
-            position: relative;
-        }
-
-        #Wapi .active:before
-        {
-            content: '';
-            position: absolute;
-            top: -4px;
-            bottom: -4px;
-            left: -4px;
-            right: -4px;
-            background-color: #0289fb;
-            border-radius: 5px;
-            opacity: .3;
-        }
-    </style>
-    <div>
-        <h2>Web Animations. Синтаксис</h2>
-        <pre style="font-size:80%;">
-            <code>var animation = new Animation(<span class="next">target</span>,</code>
-            <code> <span class="next">[{transform: 'translateX(0)'}, {transform: 'translateX(240px)'}]</span>, <span class="next">1000</span>);</code>
-            <code>var player = document.timeline.play(myAnimation);</code>
-            <code>...</code>
-            <code>player.play();</code>
-            <code>player.pause();</code>
-            <code>player.finish();</code>
-            <code>player.reverse();</code>
-            <code>player.seek();</code>
-        </pre>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Web Animations. Поддержка</h2>
-        <ul>
-            <li>Активная работа над стандартом</li>
-            <li>Частичная поддержка в Chrome и FF (включение через флаги)</li>
-            <li>Полифил: <a href="https://github.com/web-animations/web-animations-js" target="_blank">web-animations-js
-            </a>
-        </ul>
-    </div>
-</section>
-
-<section class="slide">
-    <div>
-        <h2>Web Animations и GSAP</h2>
-        <pre style="font-size:68%;">
-            <code>// Web Animations</code>
-            <code>var animation = new Animation(element, {"transform": "translate(100px, 200px)"}, 1500);</code>
-            <code>// GSAP</code>
-            <code>var animation = TweenMax(element, 1.5, { x: 100, y: 200 });</code>
-        </pre>
-        <ul>
-            <li>GSAP - абстракция</li>
-            <li>Поддержка старых браузеров, независимый transform, плагины и др.</li>
-            <li>В будущем <a href="//greensock.com/forums/topic/11247-web-animations-api-and-gsap/" target="_blank">Web Animations под капотом GSAP</a></li>
-        </ul>
-    </div>
-</section>
-
-<section class="slide" id="Final">
-    <style>
-        #Final h2 {
-            text-align: center;
-        }
-
-        #Final .schema {
-            position: relative;
-            text-align: center;
-        }
-
-        #Final .first {
             position: absolute;
             top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: red;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+    </style>
+    <div>
+        <div class="red"></div>
+        <div class="result">
+            <div class="hours">13</div>
+            часов в неделю
+        </div>
+    </div>
+</section>
+
+<section class="slide" id="slogan">
+    <div>
+        <br><br><br>
+        <blockquote>
+            Запишись в спортзал сегодня.<br>
+            <span class="next">&nbsp;Занимайся 2 раза в неделю.</span>
+        </blockquote>
+    </div>
+</section>
+
+<section class="slide" id="why-sport">
+    <style>
+        .sky
+        {
+            background: #fafcfd;
+        }
+
+        #why-sport .show-purposes.active ~ .cloud_1
+        {
+            transform: translate(-23%, -90%);
+        }
+
+        #why-sport .show-purposes.active ~ .cloud_2
+        {
+            transform: translate(140%, 40%);
+        }
+
+        #why-sport .show-purposes.active ~ .cloud_3
+        {
+            transform: translate(20%, 100%);
+        }
+
+        #why-sport .show-purposes.active ~ .cloud_4
+        {
+            transform: translate(-120%, 80%);
+        }
+
+        #why-sport .show-purposes.active ~ .cloud_5
+        {
+            transform: translate(-140%, -40%);
+        }
+
+        #why-sport .show-purposes.active ~ .cloud_6
+        {
+            transform: translate(103%, -47%);
+        }
+
+        #why-sport .show-purposes.active ~ .cloud_why
+        {
+            opacity: 0;
+            transition-duration: .1s;
+        }
+
+        #why-sport .show-strong.active ~ .cloud
+        {
+            opacity: 0;
+        }
+
+        #why-sport .show-strong.active ~ .cloud_5
+        {
+            opacity: 1;
+            transform: translate(0, 0) scale(1.5);
+        }
+    </style>
+    <div>
+        <div class="show-purposes next"></div>
+        <div class="show-strong next"></div>
+
+        <div class="cloud cloud_1">
+            <div class="cloud__normal">
+                <div class="cloud__text">ЗОЖ</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_2">
+            <div class="cloud__normal">
+                <div class="cloud__text">тонус</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_3">
+            <div class="cloud__normal">
+                <div class="cloud__text">энергия</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_4">
+            <div class="cloud__normal">
+                <div class="cloud__text">красота</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_5">
+            <div class="cloud__normal">
+                <div class="cloud__text">сила</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_6">
+            <div class="cloud__normal">
+                <div class="cloud__text">мода</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_why">
+            <div class="cloud__normal">
+                <div class="cloud__text">Зачем?</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="slide cover" id="tagil">
+    <style>
+        #tagil img {
+            height: 100%;
             left: 50%;
             transform: translateX(-50%);
-            text-align: center;
-            width: 280px;
         }
+    </style>
+    <img src="pictures/tagiil.png" alt="">
+</section>
 
-        #Final .bigger {
-            font-size: 120%;
-        }
-
-        #Final .choose {
-            font-size: 150%;
-            line-height: 2;
-        }
-
-        #Final .question {
-            line-height: 1;
-            margin-top: 5px;
-        }
-
-        #Final .note {
-            font-size: 60%;
-            margin-top: 3px;
-            line-height: 1;
-        }
-
-        #Final .second-js {
-            position: absolute;
-            left: 10%;
-            top: 100px;
-            width: 280px;
+<section class="slide" id="problems">
+    <style>
+        #problems .cloud_show
+        {
             opacity: 0;
-            transition: opacity .5s;
         }
 
-        #Final .second-js:before {
-            position: absolute;
-            content: '';
-            top: -42px;
-            right: 80px;
-            height: 60px;
-            width: 1px;
-            background: #000;
-            transform: rotate(45deg);
+        #problems .cloud_1
+        {
+            transform: translate(-23%, -90%);
+            transition-delay: .5s;
         }
 
-        #Final .second-css {
-            position: absolute;
-            right: 10%;
-            top: 100px;
-            width: 280px;
-            opacity: 0;
-            transition: opacity .5s;
+        #problems .cloud_2
+        {
+            transform: translate(127%, -30%);
+            transition-delay: 1s;
         }
 
-        #Final .second-css:before {
-            position: absolute;
-            content: '';
-            top: -42px;
-            left: 80px;
-            height: 60px;
-            width: 1px;
-            background: #000;
-            transform: rotate(-45deg);
+        #problems .cloud_3
+        {
+            transform: translate(51%, 85%);
+            transition-delay: 1.5s;
         }
 
-        #Final .third-gsap {
-            position: absolute;
-            left: -7%;
-            top: 280px;
-            opacity: 0;
-            transition: opacity .5s;
+        #problems .cloud_4
+        {
+            transform: translate(-107%, 67%);
+            transition-delay: 2.2s;
         }
 
-        #Final .third-gsap:before {
-            position: absolute;
-            content: '';
-            top: -55px;
-            left: 120px;
-            height: 60px;
-            width: 1px;
-            background: #000;
-            transform: rotate(45deg);
-        }
-
-        #Final .third-wapi {
-            position: absolute;
-            left: 16%;
-            top: 280px;
-            opacity: 0;
-            transition: opacity .5s;
-        }
-
-        #Final .third-wapi:before {
-            position: absolute;
-            content: '';
-            top: -55px;
-            left: 210px;
-            height: 60px;
-            width: 1px;
-            background: #000;
-            transform: rotate(-45deg);
-        }
-
-        #Final .third-keyframes {
-            position: absolute;
-            left: 58%;
-            top: 280px;
-            opacity: 0;
-            transition: opacity .5s;
-        }
-
-        #Final .third-keyframes:before {
-            position: absolute;
-            content: '';
-            top: -55px;
-            left: 30px;
-            height: 60px;
-            width: 1px;
-            background: #000;
-            transform: rotate(45deg);
-        }
-
-        #Final .third-transitions {
-            position: absolute;
-            right: -10%;
-            top: 280px;
-            opacity: 0;
-            transition: opacity .5s;
-        }
-
-        #Final .third-transitions:before {
-            position: absolute;
-            content: '';
-            top: -55px;
-            right: 150px;
-            height: 60px;
-            width: 1px;
-            background: #000;
-            transform: rotate(-45deg);
-        }
-
-        #Final .circle:before {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: 50%;
-            margin-left: -1em;
-            border: 1px solid #000;
-            border-radius: 50%;
-            width: 2em;
-            height: 2em;
-        }
-
-        #Final .second-js .choose:before {
-            margin-left: -39px;
-        }
-
-        #Final .square:before {
-            position: absolute;
-            content: '';
-            top: 10px;
-            left: -10px;
-            right: -10px;
-            bottom: 10px;
-            border: 1px solid #000;
-        }
-
-        #Final .yes,
-        #Final .no {
-            position: absolute;
-            color: green;
-            font-size: 120%;
-        }
-
-        #Final .second-js .yes {
-            margin:-60px 0 0 160px;
-        }
-
-        #Final .third-gsap .yes {
-            margin: -70px 0 0 80px;
-        }
-
-        #Final .third-keyframes .yes {
-            margin: -70px 0 0 -14px;
-        }
-
-        #Final .second-css .no {
-            margin:-60px 0 0 81px;
-        }
-
-        #Final .third-wapi .no {
-            margin: -70px 0 0 219px;
-        }
-
-        #Final .third-transitions .no {
-            margin: -70px 0 0 30px;
-        }
-
-        #Final .next {
-            opacity: 1;
+        #problems .cloud_5
+        {
+            transform: translate(-163%, -39%);
+            transition-delay: 1.5s;
         }
     </style>
     <div>
-        <h2>Подход к выбору методики</h2>
-        <div class="schema">
-            <div class="first next">
-                <div class="question bigger">Нужен контроль?</div>
-                <div class="note">Анимация на скролле, переход в конкретную точку и др.</div>
+        <div class="cloud cloud_1">
+            <div class="cloud__explosion cloud_hide">
+                <div class="cloud__text">усталость</div>
             </div>
+        </div>
 
-            <div class="second-js next">
-                <div class="yes">да</div>
-                <div class="choose circle">JS</div>
-                <div class="next">
-                    <div class="question">Продуктовая задача?</div>
-                    <div class="note">Широкая поддержка браузерами</div>
-                </div>
+        <div class="cloud cloud_2">
+            <div class="cloud__smoke cloud_hide">
+                <div class="cloud__text">вялость</div>
             </div>
+        </div>
 
-            <div class="third-gsap next">
-                <div class="yes">да</div>
-                <div class="choose square">GSAP</div>
+        <div class="cloud cloud_3">
+            <div class="cloud__explosion cloud_hide">
+                <div class="cloud__text">тяжелая голова</div>
             </div>
+        </div>
 
-            <div class="third-wapi next">
-                <div class="no">нет</div>
-                <div class="choose square">Web Animations</div>
+        <div class="cloud cloud_4">
+            <div class="cloud__smoke cloud_hide">
+                <div class="cloud__text">поблажки</div>
             </div>
+        </div>
 
-            <div class="second-css next">
-                <div class="no">нет</div>
-                <div class="choose circle">CSS</div>
-                <div class="next">
-                    <div class="question">Сложная анимация?</div>
-                    <div class="note">Больше двух состояний, нужна остановка</div>
-                </div>
-            </div>
-
-            <div class="third-keyframes next">
-                <div class="yes">да</div>
-                <div class="choose square">Keyframes</div>
-            </div>
-
-            <div class="third-transitions next">
-                <div class="no">нет</div>
-                <div class="choose square">Transitions</div>
+        <div class="cloud cloud_5">
+            <div class="cloud__smoke cloud_hide">
+                <div class="cloud__text">нехватка времени</div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="slide cover" id="End">
+<section class="slide" id="power-of-habbit">
     <style>
-        #End h2
+        #power-of-habbit
         {
-            font-size: 70px;
-            margin: 170px 0 0;
-            color: #fff;
+            text-align: center;
         }
 
-        #End .b-name
+        #power-of-habbit img
         {
-            color: #fff;
-            background-color: rgba(3, 135, 254, 0.8);
-            border-radius: 10px;
-            float: right;
-            margin: 160px 0 0;
-            padding: 0 10px;
+            height: 95%;
+            margin: -20px 0 0;
         }
+    </style>
 
-        #End a
-        {
-            color: #fff;
-            background: none;
-        }
+    <div>
+        <img src="pictures/power_of_habbit.png" alt="">
+    </div>
+</section>
 
-        #End .b-contact
+<section class="slide" id="blockquote">
+    <style>
+        #blockquote:after
         {
-            line-height: 1.4;
-            margin: 130px 0 0;
-            color: #c0dffc;
-        }
-
-        #End .b-slogan
-        {
-            color: #fff;
-            font-size: 250%;
-            line-height: 1;
-            /*font-style: italic;*/
-        }
-
-        #End .b-slogan span
-        {
-            display: inline-block;
-            margin: 5px 0;
-            background-color: rgba(3, 135, 254, 0.8);
-            padding: 0 10px 6px;
-            border-radius: 10px;
+            display: none;
         }
     </style>
     <div>
-        <div class="b-slogan">
-            <span>Анимируй с нами.</span><br>
-            <span>Анимируй как мы.</span><br>
-            <span>Анимируй лучше нас!</span>
+        <br><br>
+        <blockquote>
+            Ключевые привычки настолько сильные, что запускают цепную реакцию, меняя другие привычки.
+            Они запускают процесс, который со временем меняет все вокруг.
+            <figcaption style="text-align:right"><strong>Чарлз Дахигг. «Сила привычки»</strong></figcaption>
+        </blockquote>
+    </div>
+</section>
+
+<section class="slide" id="problems-2">
+    <style>
+        #problems-2 .cloud_show
+        {
+            opacity: 0;
+        }
+
+        #problems-2 .cloud_1
+        {
+            transform: translate(-23%, -90%);
+            transition-delay: .5s;
+        }
+
+        #problems-2 .cloud_1 div
+        {
+            transition-delay: .5s;
+        }
+
+        #problems-2 .cloud_2
+        {
+            transform: translate(127%, -30%);
+        }
+
+        #problems-2 .cloud_2 div
+        {
+            transition-delay: 1.1s;
+        }
+
+        #problems-2 .cloud_3
+        {
+            transform: translate(51%, 85%);
+        }
+
+        #problems-2 .cloud_3 div
+        {
+            transition-delay: .7s;
+        }
+
+        #problems-2 .cloud_4
+        {
+            transform: translate(-107%, 67%);
+        }
+
+        #problems-2 .cloud_4 div
+        {
+            transition-delay: .9s;
+        }
+
+        #problems-2 .cloud_5
+        {
+            transform: translate(-163%, -39%);
+        }
+
+        #problems-2 .cloud_5 div
+        {
+            transition-delay: 1.3s;
+        }
+
+        #problems-2 .show-second.active ~ .cloud .cloud_hide
+        {
+            opacity: 0;
+        }
+
+        #problems-2 .show-second.active ~ .cloud .cloud_show
+        {
+            opacity: 1;
+        }
+    </style>
+    <div>
+        <div class="show-second next"></div>
+
+        <div class="cloud cloud_1">
+            <div class="cloud__explosion cloud_hide">
+                <div class="cloud__text">усталость</div>
+            </div>
+            <div class="cloud__normal cloud_show">
+                <div class="cloud__text">энергия</div>
+            </div>
         </div>
-        <img src="pictures/asus.jpg" alt="" width="1144">
-        <div class="b-name">Завьялов Александр <a class="b-twitter" href="https://twitter.com/ihannky" target="_blank">@ihannky</a></div>
-        <!--<div class="b-contact">-->
-            <!--<a class="b-twitter" href="https://twitter.com/ihannky" target="_blank">@ihannky</a><br>-->
-            <!--<a class="b-mail" href="mailto:hanky@yandex-team.ru">hanky@yandex-team.ru</a>-->
-        <!--</div>-->
+
+        <div class="cloud cloud_2">
+            <div class="cloud__smoke cloud_hide">
+                <div class="cloud__text">вялость</div>
+            </div>
+            <div class="cloud__normal cloud_show">
+                <div class="cloud__text">тонус</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_3">
+            <div class="cloud__explosion cloud_hide">
+                <div class="cloud__text">тяжелая голова</div>
+            </div>
+            <div class="cloud__normal cloud_show">
+                <div class="cloud__text">светлая голова</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_4">
+            <div class="cloud__smoke cloud_hide">
+                <div class="cloud__text">поблажки</div>
+            </div>
+            <div class="cloud__normal cloud_show">
+                <div class="cloud__text">характер</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_5">
+            <div class="cloud__smoke cloud_hide">
+                <div class="cloud__text">нехватка времени</div>
+            </div>
+            <div class="cloud__normal cloud_show">
+                <div class="cloud__text">планирование</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="slide cover blank_cover" id="lie">
+    <div>
+        <h2>А не врешь?</h2>
+    </div>
+</section>
+
+<section class="slide cover blank_cover" id="ted">
+    <style>
+        #ted h2
+        {
+            top: 10px;
+            transform: translateX(-50%);
+        }
+
+        #ted .video
+        {
+            display: inline-block;
+            box-shadow: 0 0 45px -7px #fff;
+            border-radius: 6px;
+            width: 50%;
+            position: relative;
+        }
+
+        #ted .video-1
+        {
+        }
+
+        #ted .video-2
+        {
+            transform: translate(90%, -80%);
+        }
+
+        #ted .video-3
+        {
+            transform: translate(10%, -130%);
+        }
+
+        #ted .video-4
+        {
+            transform: translate(100%, -200%);
+        }
+
+        #ted h3
+        {
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            transform: translateY(-100%);
+
+            font-size: 80%;
+            background: #000;
+        }
+
+        #ted img
+        {
+            position: relative;
+            width: 100%;
+        }
+    </style>
+    <div>
+        <h2>TED</h2>
+
+        <div class="video video-1 next">
+            <img src="pictures/ted-1.png" alt="">
+            <h3>Exercise and the Brain</h3>
+        </div>
+        <div class="video video-2 next">
+            <img src="pictures/ted-2.png" alt="">
+            <h3>High-intensity physical exercise</h3>
+        </div>
+        <div class="video video-3 next">
+            <img src="pictures/ted-3.png" alt="">
+            <h3>Muscle matters</h3>
+        </div>
+        <div class="video video-4 next">
+            <img src="pictures/ted-4.png" alt="">
+            <h3>Focus is a muscle</h3>
+        </div>
+    </div>
+</section>
+
+<section class="slide cover" id="this-is-horosho">
+    <style>
+        #this-is-horosho img
+        {
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+    <div>
+        <img src="pictures/allright.jpg" alt="">
+    </div>
+</section>
+
+<section class="slide" id="why-not">
+    <style>
+        #why-not .cloud_1
+        {
+            transform: translate(7%, -30%);
+        }
+
+        #why-not .cloud_2
+        {
+            transform: translate(-113%, 60%);
+        }
+
+        #why-not .cloud_3
+        {
+            transform: translate(91%, 79%);
+        }
+    </style>
+    <div>
+        <h2>Почему нет?</h2>
+        <div class="cloud cloud_1">
+            <div class="cloud__explosion">
+                <div class="cloud__text">нет времени</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_2">
+            <div class="cloud__smoke">
+                <div class="cloud__text">страшно</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_3">
+            <div class="cloud__smoke">
+                <div class="cloud__text">нет подходящего зала</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="slide cover" id="nottime">
+    <style>
+        #nottime img
+        {
+            width: 100%;
+        }
+    </style>
+    <div>
+        <img src="pictures/nottime.jpg" alt="">
+    </div>
+</section>
+
+<section class="slide">
+    <div>
+        <h2>Как найти время?</h2>
+        <ul>
+            <li class="next">планируйте</li>
+        </ul>
+    </div>
+</section>
+
+<section class="slide" id="minuts">
+    <style>
+        #minuts
+        {
+            text-align: center;
+        }
+
+        #minuts img
+        {
+            height: 95%;
+        }
+    </style>
+
+    <div>
+        <img src="pictures/18minut.jpg" alt="">
+    </div>
+</section>
+
+<section class="slide">
+    <div>
+        <h2>Как найти время?</h2>
+        <ul>
+            <li>планируйте</li>
+            <li class="next">придерживайтесь плана</li>
+        </ul>
+    </div>
+</section>
+
+<section class="slide" id="procrastinacia">
+    <style>
+        #procrastinacia:after
+        {
+            display: none;
+        }
+
+        #procrastinacia div div
+        {
+            text-align: center;
+            line-height: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            transition: opacity .3s;
+        }
+
+        #procrastinacia .first
+        {
+            font-size: 100%;
+        }
+
+        #procrastinacia .second
+        {
+            font-size: 200%;
+            opacity: 0;
+        }
+
+        #procrastinacia .third
+        {
+            font-size: 300%;
+            opacity: 0;
+        }
+
+        #procrastinacia .for-second.active ~ .first
+        {
+            opacity: 0;
+        }
+
+        #procrastinacia .for-second.active ~ .second
+        {
+            opacity: 1;
+        }
+
+        #procrastinacia .for-third.active ~ .second
+        {
+            opacity: 0;
+        }
+
+        #procrastinacia .for-third.active ~ .third
+        {
+            opacity: 1;
+        }
+    </style>
+    <div>
+        <div class="next for-second"></div>
+        <div class="next for-third"></div>
+        <div class="first">1.5 часа</div>
+        <div class="second">547 часов</div>
+        <div class="third">4 тренировки</div>
+    </div>
+</section>
+
+<section class="slide">
+    <div>
+        <h2>Как найти время?</h2>
+        <ul>
+            <li>планируйте</li>
+            <li>придерживайтесь плана</li>
+            <li class="next">расходуйте время эффективно</li>
+        </ul>
+    </div>
+</section>
+
+<section class="slide" id="strange-life">
+    <style>
+        #strange-life
+        {
+            text-align: center;
+        }
+
+        #strange-life img
+        {
+            height: 95%;
+        }
+    </style>
+
+    <div>
+        <img src="pictures/strange_life.png" alt="">
+    </div>
+</section>
+
+<section class="slide" id="slogan-3">
+    <div>
+        <br><br><br>
+        <blockquote>
+            Запишись в спортзал сегодня.<br>
+            &nbsp;Занимайся 2 раза в неделю.<br>
+            &nbsp;&nbsp;Работай меньше и эффективней.
+        </blockquote>
+    </div>
+</section>
+
+<section class="slide cover" id="sleep">
+    <style>
+        #sleep img
+        {
+            width: 100%;
+        }
+    </style>
+    <div>
+        <img src="pictures/sleep.jpg" alt="">
+    </div>
+</section>
+
+<section class="slide">
+    <style>
+
+    </style>
+    <div>
+        <h2>Сколько спать?</h2>
+        <ul>
+            <li>Подростки 8–10 ч</li>
+            <li>Взрослые 7–9 ч</li>
+        </ul>
+        <p class="note">National Sleep Foundation, USA</p>
+    </div>
+</section>
+
+<section class="slide" id="low-sleep">
+    <style>
+        #low-sleep img
+        {
+            display: inline-block;
+            height: 270px;
+        }
+
+        #low-sleep div
+        {
+            white-space: nowrap;
+            padding-left: 80px;
+            padding-top: 175px;
+        }
+    </style>
+    <div>
+        <img class="next" src="pictures/julius_caesar.jpg" alt="">
+        <img class="next" src="pictures/benfranklin.jpg" alt="">
+        <img class="next" src="pictures/leonardo_da_vinchi.jpg" alt="">
+        <img class="next" src="pictures/tesla.jpg" alt="">
+    </div>
+</section>
+
+<section class="slide cover" id="owl">
+    <style>
+        #owl img
+        {
+            width: 100%;
+        }
+    </style>
+    <div>
+        <img src="pictures/owl.jpg" alt="">
+    </div>
+</section>
+
+<section class="slide" id="extra-life">
+    <style>
+        #extra-life:after
+        {
+            display: none;
+        }
+
+        #extra-life .result
+        {
+            text-align: center;
+            line-height: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            transition: opacity .3s;
+            font-size: 500%;
+        }
+
+        #extra-life .question
+        {
+            text-align: center;
+            line-height: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 200%;
+        }
+
+        #extra-life .result.active + .question
+        {
+            opacity: 0;
+        }
+    </style>
+    <div>
+        <div class="result next">> 4 лет</div>
+        <div class="question">Сколько?</div>
+    </div>
+</section>
+
+<section class="slide cover blank_cover" id="fear">
+    <style>
+        #fear img
+        {
+            width: 100%;
+        }
+    </style>
+    <div>
+        <img src="pictures/fear.jpg" alt="">
+    </div>
+</section>
+
+<section class="slide cover" id="noobs">
+    <style>
+        #noobs video
+        {
+            margin: 0 auto;
+            width: 100%;
+        }
+    </style>
+    <video src="videos/noobs.webm" controls="controls" height="100%"></video>
+</section>
+
+<section class="slide" id="fears">
+    <style>
+        #fears:after
+        {
+            display: none;
+        }
+
+        #fears .cloud_show
+        {
+            opacity: 0;
+        }
+
+        #fears .cloud_1
+        {
+            transform: translate(-63%, -60%);
+            transition-delay: .5s;
+        }
+
+        #fears .cloud_2
+        {
+            transform: translate(117%, -20%);
+        }
+
+        #fears .cloud_3
+        {
+            transform: translate(51%, 85%);
+        }
+
+        #fears .cloud_4
+        {
+            transform: translate(-107%, 67%);
+        }
+
+        #fears .show-first.active ~ .cloud_1 .cloud_hide
+        {
+            opacity: 0;
+        }
+
+        #fears .show-first.active ~ .cloud_1 .cloud_show
+        {
+            opacity: 1;
+        }
+
+        #fears .show-second.active ~ .cloud_2 .cloud_hide
+        {
+            opacity: 0;
+        }
+
+        #fears .show-second.active ~ .cloud_2 .cloud_show
+        {
+            opacity: 1;
+        }
+
+        #fears .show-third.active ~ .cloud_3 .cloud_hide
+        {
+            opacity: 0;
+        }
+
+        #fears .show-third.active ~ .cloud_3 .cloud_show
+        {
+            opacity: 1;
+        }
+
+        #fears .show-fourth.active ~ .cloud_4 .cloud_hide
+        {
+            opacity: 0;
+        }
+
+        #fears .show-fourth.active ~ .cloud_4 .cloud_show
+        {
+            opacity: 1;
+        }
+    </style>
+    <div>
+        <div class="show-first next"></div>
+        <div class="show-second next"></div>
+        <div class="show-third next"></div>
+        <div class="show-fourth next"></div>
+
+        <div class="cloud cloud_1">
+            <div class="cloud__explosion cloud_hide">
+                <div class="cloud__text">выглядеть смешно</div>
+            </div>
+            <div class="cloud__normal cloud_show">
+                <div class="cloud__text">все начинали как вы</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_2">
+            <div class="cloud__smoke cloud_hide">
+                <div class="cloud__text">травмироваться</div>
+            </div>
+            <div class="cloud__normal cloud_show">
+                <div class="cloud__text">инструктора</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_3">
+            <div class="cloud__smoke cloud_hide">
+                <div class="cloud__text">раскачаться</div>
+            </div>
+            <div class="cloud__normal cloud_show">
+                <div class="cloud__text">просто не будет</div>
+            </div>
+        </div>
+
+        <div class="cloud cloud_4">
+            <div class="cloud__smoke cloud_hide">
+                <div class="cloud__text">потратить время</div>
+            </div>
+            <div class="cloud__normal cloud_show">
+                <div class="cloud__text">10000 часов</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="slide" id="rule10000">
+    <style>
+        #rule10000 .rule
+        {
+            text-align: center;
+            line-height: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+        }
+
+        #rule10000 .count
+        {
+            font-size: 600%;
+            display: inline-block;
+            background: none;
+        }
+
+        #rule10000 .hours
+        {
+            font-size: 100%;
+        }
+    </style>
+    <div>
+        <div class="rule">
+            <div class="hours">правило</div>
+            <a href="http://www.forbes.ru/forbes/issue/2009-04/7255-pravilo-10000-chasov" class="count">10000</a>
+            <div class="hours">часов</div>
+        </div>
+    </div>
+</section>
+
+<section class="slide cover" id="nowhere">
+    <style>
+        #nowhere img
+        {
+            width: 100%;
+        }
+    </style>
+    <div>
+        <img src="pictures/nowhere.jpg" alt="">
+    </div>
+</section>
+
+<section class="slide cover" id="2gis">
+    <style>
+        #2gis video
+        {
+            margin: 0 auto;
+            width: 100%;
+        }
+    </style>
+    <video src="videos/2gis.webm" controls="controls" height="100%"></video>
+</section>
+
+<section class="slide">
+    <div>
+        <h2>Возможности вашего города</h2>
+        <ul>
+            <li><a href="http://www.it-people.ru/#!blank/i9kmj">IT спартакиада</a></li>
+            <li><a href="http://sportcourts.ru/">SportCourts</a></li>
+        </ul>
+    </div>
+</section>
+
+<section class="slide cover" id="sportcourts">
+    <style>
+        #sportcourts img {
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+    <img src="pictures/sportcourts.png" alt="">
+</section>
+
+<section class="slide cover" id="jog">
+    <style>
+        #jog img
+        {
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+    <div>
+        <img src="pictures/jog.gif" alt="">
+    </div>
+</section>
+
+<section class="slide" id="final">
+    <style>
+        #final:after
+        {
+            display: none;
+        }
+
+        #final div
+        {
+            padding-top: 120px;
+        }
+
+        #final blockquote
+        {
+            font-size: 200%;
+        }
+
+        #final .name
+        {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            font-size: 70%;
+            color: #ccc;
+        }
+
+        #final .name a
+        {
+            background: none;
+        }
+    </style>
+    <div>
+        <blockquote>
+            Запишись в спортзал сегодня.<br>
+            &nbsp;Занимайся 2 раза в неделю.<br>
+            &nbsp;&nbsp;Работай меньше и эффективней.<br>
+            &nbsp;&nbsp;&nbsp;Перестань искать оправдания!
+        </blockquote>
+        <div class="name">Завьялов Александр <a class="b-twitter" href="https://twitter.com/ihannky" target="_blank">@ihannky</a>
+        </div>
     </div>
 </section>
 
